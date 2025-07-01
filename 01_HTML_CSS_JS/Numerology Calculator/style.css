@@ -1,0 +1,44 @@
+body {
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding-top: 70px;
+}
+.navbar .container {
+    margin: 0%;
+}
+
+
+.hero-section {
+    background: url('img.webp') center/cover;
+    padding: 120px 20px 80px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+.title {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+.animate {
+    animation: fadeIn 1.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.footer .container{
+    padding: 2px;
+
+}

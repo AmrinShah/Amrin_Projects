@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Kondaji Chivda</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="kstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    
+      <!-- Navigation Bar -->
+    
+ <nav class="navbar background h-nav-resp">
+            
+    <div class="logo">Kondaji Chivda</div>
+    <ul class="nav-links v-class-resp">
+        <li><a href="Kondaji.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="product.html">Our Products</a></li>
+        <li><a href="testimonial.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div> 
+    </div>  
+</nav>
+
+    <div class="wrapper">
+        <main>
+            <!-- Products Introduction -->
+            <section class="intro text-center py-5">
+                <h1>Experience the Taste of Authenticity</h1>
+                <p>Savor the rich flavors of Kondaji Chivda – a heritage of taste, crafted with the finest ingredients to bring joy in every bite.</p>
+            </section>
+    
+            <!-- Products Section -->
+            <section class="products">
+                <div class="text-center position-relative">
+                    <h1 class="products-h1"><b>Our Products</b></h1>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <!-- Product 1 -->
+                            <div class="col-md-3 mb-3">
+                                <div class="card h-100 shadow d-flex flex-column">
+                                    <img src="img/k2.jpg" class="card-img-top" alt="Jain Chivda">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Jain Chivda</h5>
+                                        <p class="card-text">Tasty and Pure</p>
+                                        <a href="getorder.html" class="btn btn-warning mt-auto">Order Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 2 -->
+                            <div class="col-md-3 mb-3">
+                                <div class="card h-100 shadow d-flex flex-column">
+                                    <img src="img/k3.jpg" class="card-img-top" alt="Makhmal Chivda">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Makhmal Chivda</h5>
+                                        <p class="card-text">Soft in Name, Smooth in Taste</p>
+                                        <a href="getorder.html" class="btn btn-warning mt-auto">Order Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 3 -->
+                            <div class="col-md-3 mb-3">
+                                <div class="card h-100 shadow d-flex flex-column">
+                                    <img src="img/k4.jpg" class="card-img-top" alt="Corn Chivda">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Corn Chivda</h5>
+                                        <p class="card-text">Light, healthy, and exceptionally crispy</p>
+                                        <a href="getorder.html" class="btn btn-warning mt-auto">Order Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </main>
+    </div>
+    
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Kondaji Chivda | All Rights Reserved</p>
+        </footer>
+        </div>
+
+        
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const burger = document.querySelector(".burger");
+        const navLinks = document.querySelector(".nav-links");
+    
+        burger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    });
+    
+    // Function to redirect to order page
+    function redirectToOrder() {
+        window.location.href = "getorder.html"; 
+    }
+    
+    // Function to handle "Explore Flavors" click
+    function handleExploreClick() {
+        toggleDropdown(); // Show dropdown first
+        setTimeout(redirectToOrder, 2000); // Redirect after 2 seconds
+    }
+    
+    // Function to toggle dropdown visibility
+    function toggleDropdown() {
+        let dropdown = document.getElementById("flavorMenu");
+        dropdown.classList.toggle("show");
+    }
+    
+    // Function to select a flavor and redirect
+    function selectFlavor(flavor) {
+        alert("You selected: " + flavor);
+        redirectToOrder();
+    }
+    
+    // Close dropdown when clicking outside
+    window.addEventListener("click", function (event) {
+        if (!event.target.closest(".btn-explore-flavors") && !event.target.closest("#flavorMenu")) {
+            let dropdown = document.getElementById("flavorMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

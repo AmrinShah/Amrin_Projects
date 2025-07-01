@@ -1,0 +1,677 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+}
+
+
+   /* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Moves logo left, navbar right */
+    align-items: center;
+    background-color: white; /* Navbar background */
+    padding: 10px 0; /* Adds space inside the navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Logo Styling */
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0; /* Adds space between menu items */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block;
+    position:relative;
+}
+
+.nav-links a:hover {
+    color: darkorange;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 60%;
+    height: 2px;
+    background-color: darkorange;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: #f8b400;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 80%; /* Ensures menu appears below navbar */
+        left: 60%;
+        width: 40%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        padding: 5px 0;
+        z-index: 999; /* Keeps menu above content */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        align-items: center;    
+     }
+
+
+    .nav-links.active {
+        display: flex;
+    }
+
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Ensure content moves down when navbar expands */
+    .menu-open {
+        margin-top: 150px; /* Adjust spacing below navbar */
+    }
+
+
+    .nav-links li a {
+        text-decoration: none;
+        color: black; /* Default color */
+        font-size: 18px !important;
+        padding: 10px 20px;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Apply only to product.html */
+    body.product-page .navbar a {
+    font-size: 18px !important; /* Adjust as needed */
+}
+
+
+    .nav-links li a:hover {
+        background: orange; /* Change background on hover */
+        color: white; /* Change text color */
+    }
+}
+
+/* Ensure main content is pushed below the navbar */
+main {
+    margin-top: 40px; /* Adjust height based on navbar */
+}
+
+
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    position: relative;
+    
+}
+
+.hero-text {
+    max-width: 400px;
+}
+
+.hero-text h1 {
+    font-size: 32px;
+}
+
+.hero-text p {
+    color: gray;
+}
+
+
+
+.btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid darkorange; /* Keeping only this border */
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+.btn-get-yours-now {
+    background: orange;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-get-yours-now:hover {
+    background: darkorange;
+    color:#fff;
+}
+
+.btn-explore-flavors {
+    background: white;
+    color: orange;
+    margin-right: 10px;
+}
+
+.btn-explore-flavors:hover {
+    background: orange;
+    color: white;
+}
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;  /* Initially hidden */
+    position: absolute;
+    background: white;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 150px;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f8b400;
+    color: white;
+}
+
+
+/* Hero Image */
+.hero-image img {
+    width: 350px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Food Highlights */
+.food-highlights {
+    position: absolute;
+    right: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.food-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 30px;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.food-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.orange {
+    background: orange;
+    color: white;
+}
+
+.white {
+    background: white;
+}
+
+/* Hero Background */
+.hero-section {
+    background: url("img/bimg.webp") no-repeat center center/cover;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Highlighted Text Styling */
+.hero-heading {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtext {
+    font-size: 20px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 25px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 2px solid #ff9800;
+}
+
+
+/* Main content should take available space */
+main {
+    flex: 1;
+}
+
+.products {
+    background-image: url('img/pimg.webp'); /* Use the correct file path */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    padding: 40px 0;
+    color: white; /* Adjust text color if needed */
+    
+}
+
+.products-h1 {
+        color:darkorange;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 5px;
+        justify-content:center ;
+    }
+    
+
+.product-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    min-height: 250px; /* Ensures all cards have the same height */
+}
+
+.product-card p {
+    font-size: 12px; /* Adjust as needed */
+    line-height: 1.9;
+    color: #333;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card h3 {
+    color: #E65100; /* Darker orange for text */
+}
+
+.order-now {
+    background-color: #E65100; /* Deep orange for button */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.order-now:hover {
+    background-color: #BF360C; /* Even darker shade on hover */
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    background-color:#FF9800;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.testimonials h1 {
+    color: #fff;
+    font-weight: bold;
+}
+
+.testimonials p {
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #333;
+}
+
+.testimonial-card h5 {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #FF9800;
+}
+
+
+
+
+/* Locations */
+.locations {
+    padding: 20px;
+    text-align: center;
+}
+
+.location-link {
+    padding: 3px 6px;
+    color: orange; /* Dark orange text */ 
+}
+
+.location-link:hover {
+    color: blue; /* Darker on hover */
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    width: 25%;
+    padding: 10px;
+}
+
+.footer-section h3 {
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: orange;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+}
+
+.social-icon {
+    font-weight: bold;
+    text-decoration: none;
+    color:#FF9800;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icons div:hover {
+    transform: translateY(-5px);
+    text-decoration: underline;
+}
+
+.send-btn {
+    background: #e65100;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.send-btn:hover {
+    background: #bf360c;
+}
+
+
+/* Footer styling */
+
+footer {
+    background: #343a40; /* Dark Bootstrap color */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px; /* Slightly larger text */
+    border-top: 3px solid darkorange; /* Adds a subtle golden border */
+}
+
+/* Ensure the main wrapper pushes the footer down */
+.wrapper {
+    min-height: 100vh; /* Minimum height of viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the main content expands */
+main {
+    flex: 1; /* Takes up all available space */
+}
+
+/* Fix footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto; /* Pushes it to the bottom */
+    width: 100%;
+}
+
+
+
+/* CSS for Styling */
+
+    .social-icons {
+        margin-top: 10px;
+    }
+    .social-icons a {
+        margin: 0 10px;
+        font-size: 24px;
+        color: #fff; /* Change color as needed */
+        text-decoration: none;
+    }
+    .social-icons a:hover {
+        color: #ff6600; /* Change hover color as needed */
+    }
+
+/* Hover effect */
+
+/*get order page*/
+
+/* Apply fixed navbar only on Get Order page */
+.get-order-page .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white; /* Change as per design */
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure content does not hide behind navbar only on Get Order page */
+.get-order-page {
+    padding-top: 60px; /* Adjust based on navbar height */
+}
+
+
+.order-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+h2 {
+    color: orange;
+    text-align: center;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.payment-method {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.payment-option {
+    flex: 1;
+    text-align: center;
+    background: #f8f8f8;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.payment-option:hover, .payment-option input:checked + label {
+    background: darkorange;
+    color: white;
+}
+.payment-option input {
+    display: none;
+}
+.order-button {
+    background: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+.order-button:hover {
+    background: darkorange;
+}
+.payment-option img {
+    width: 150px;
+    height: auto;
+    margin-top: 5px;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center align */
+     margin-top: 15px; /* Add space on top */
+}
+
+.payment-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    white-space: nowrap; /* Prevents text wrapping */
+}
+.payment-btn:hover{
+    background: darkorange;
+}
+

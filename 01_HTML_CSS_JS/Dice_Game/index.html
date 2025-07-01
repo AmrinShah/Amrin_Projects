@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Player Dice Game - jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.0"></script>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+            overflow: hidden; 
+            transition: background 0.3s; 
+        }
+        .dice-container { display: flex; justify-content: center; gap: 50px; margin: 20px; }
+        .dice { width: 100px; height: 100px; font-size: 80px; display: flex; align-items: center; justify-content: center; }
+        .rolling { animation: shake 0.5s infinite; }
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        .winner { font-size: 24px; font-weight: bold; color: green; margin-top: 20px; }
+        button { font-size: 18px; padding: 10px 20px; cursor: pointer; margin: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>🎲 2 Player Dice Game 🎲</h1>
+
+    <div class="dice-container">
+        <div>
+            <h2>Player 1</h2>
+            <div id="dice1" class="dice">🎲</div>
+            <p id="score1">Score: 0</p>
+            <p>Wins: <span id="wins1">0</span></p>
+        </div>
+        <div>
+            <h2>Player 2</h2>
+            <div id="dice2" class="dice">🎲</div>
+            <p id="score2">Score: 0</p>
+            <p>Wins: <span id="wins2">0</span></p>
+        </div>
+    </div>
+
+    <button id="rollBtn">Roll Dice</button>
+    <button id="restartBtn">Restart Game</button>
+    <p class="winner" id="winnerText"></p>
+
+    <!-- Dice Roll Sound -->
+    <audio id="diceSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+    <!-- Firework Sound -->
+    <audio id="fireworkSound" src="https://www.fesliyanstudios.com/play-mp3/6312" preload="auto"></audio>
+
+    <script>
+        $(document).ready(function () {
+            let currentPlayer = 1;
+            let scores = { 1: 0, 2: 0 };
+            let wins = { 1: 0, 2: 0 };
+            let bestOf = 3; // First to 3 wins
+
+            $("#rollBtn").click(function () {
+                if (wins[1] >= bestOf || wins[2] >= bestOf) return; // Stop game if someone wins 3 times
+
+                $("#winnerText").text(""); // Clear previous result
+
+                let diceElement = currentPlayer === 1 ? $("#dice1") : $("#dice2");
+                let scoreElement = currentPlayer === 1 ? $("#score1") : $("#score2");
+                let diceSound = $("#diceSound")[0];
+
+                diceSound.currentTime = 0;
+                diceSound.play();
+
+                diceElement.addClass("rolling").text("🎲");
+
+                setTimeout(() => {
+                    let roll = Math.floor(Math.random() * 6) + 1;
+                    scores[currentPlayer] = roll;
+                    diceElement.removeClass("rolling").text(getDiceEmoji(roll));
+                    scoreElement.text(`Score: ${roll}`);
+
+                    if (currentPlayer === 2) {
+                        setTimeout(checkWinner, 500); // Wait before declaring winner
+                    }
+
+                    currentPlayer = currentPlayer === 1 ? 2 : 1;
+                }, 1000);
+            });
+
+            function checkWinner() {
+                let winnerText = "";
+
+                if (scores[1] > scores[2]) {
+                    winnerText = "🏆 Player 1 Wins!";
+                    wins[1]++;
+                    $("#wins1").text(wins[1]);
+                    triggerEffects();
+                } else if (scores[2] > scores[1]) {
+                    winnerText = "🏆 Player 2 Wins!";
+                    wins[2]++;
+                    $("#wins2").text(wins[2]);
+                    triggerEffects();
+                } else {
+                    winnerText = "🤝 It's a Tie!";
+                }
+                $("#winnerText").text(winnerText);
+
+                if (wins[1] >= bestOf || wins[2] >= bestOf) {
+                    $("#winnerText").append("<br>🎉 GAME OVER! 🎉");
+                }
+            }
+
+            function getDiceEmoji(num) {
+                return ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"][num - 1];
+            }
+
+            function triggerEffects() {
+                triggerFireworks();
+                flashBackground();
+            }
+
+            function flashBackground() {
+                let colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+                let i = 0;
+                let interval = setInterval(() => {
+                    $("body").css("background", colors[i % colors.length]);
+                    i++;
+                    if (i > 10) { 
+                        clearInterval(interval);
+                        $("body").css("background", "");
+                    }
+                }, 200);
+            }
+
+            function triggerFireworks() {
+                let duration = 3 * 1000;
+                let animationEnd = Date.now() + duration;
+                let colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+
+                let fireworkSound = $("#fireworkSound")[0];
+                fireworkSound.currentTime = 0;
+                fireworkSound.play();
+
+                function frame() {
+                    let timeLeft = animationEnd - Date.now();
+                    if (timeLeft <= 0) return;
+
+                    let particleCount = 50 * (timeLeft / duration);
+                    confetti({
+                        particleCount,
+                        startVelocity: 30,
+                        spread: 360,
+                        origin: { x: Math.random(), y: Math.random() - 0.2 },
+                        colors: colors
+                    });
+
+                    requestAnimationFrame(frame);
+                }
+                frame();
+            }
+
+            $("#restartBtn").click(function () {
+                scores = { 1: 0, 2: 0 };
+                wins = { 1: 0, 2: 0 };
+                $("#dice1, #dice2").text("🎲");
+                $("#score1").text("Score: 0");
+                $("#score2").text("Score: 0");
+                $("#wins1").text("0");
+                $("#wins2").text("0");
+                $("#winnerText").text("");
+                $("body").css("background", "");
+            });
+        });
+    </script>
+
+</body>
+</html>

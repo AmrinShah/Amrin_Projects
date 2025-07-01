@@ -1,0 +1,137 @@
+<!-- Get Your Order Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Order | Kondaji Chivda</title>
+    <link rel="stylesheet" href="kstyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+<body>
+    
+
+      <!-- Navigation Bar -->
+    
+     <nav class="navbar background h-nav-resp">
+        <body class="get-order-page">
+  
+    <div class="logo">Kondaji Chivda</div>
+    <ul class="nav-links v-class-resp">
+        <li><a href="Kondaji.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="product.html">Our Products</a></li>
+        <li><a href="testimonial.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>  
+</nav>
+
+    
+    <div class="order-container">
+        <h2>Get Your Order</h2>
+        <form>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address">
+            
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+            
+            <label for="flavor">Choose Your Flavor:</label>
+    <select id="flavor" name="flavor">
+    <option value="Spicy Masala">Spicy Masala</option>
+    <option value="Classic Salted">Classic Salted</option>  <!-- Fix typo from 'Salte' -->
+    <option value="Cheese Delight">Cheese Delight</option>
+    <option value="Sweet & Tangy">Sweet & Tangy</option>
+</select>
+
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1">
+            
+            <div class="payment-methods">
+                <button class="payment-btn">
+                    <i class="bi bi-cash"></i> COD
+                </button>
+                <button class="payment-btn">
+                    <i class="bi bi-credit-card"></i> UPI
+                </button>
+                <button class="payment-btn">
+                    <i class="bi bi-bank"></i> Net Banking
+                </button>
+            </div>
+            
+            
+            <button type="submit" class="order-button">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const burger = document.querySelector(".burger");
+            const navLinks = document.querySelector(".nav-links");
+        
+            burger.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+        
+        // Function to redirect to order page
+        function redirectToOrder() {
+            window.location.href = "getorder.html"; 
+        }
+        
+        // Function to handle "Explore Flavors" click
+        function handleExploreClick() {
+            toggleDropdown(); // Show dropdown first
+            setTimeout(redirectToOrder, 2000); // Redirect after 2 seconds
+        }
+        
+        // Function to toggle dropdown visibility
+        function toggleDropdown() {
+            let dropdown = document.getElementById("flavorMenu");
+            dropdown.classList.toggle("show");
+        }
+        
+        // Function to select a flavor and redirect
+        function selectFlavor(flavor) {
+            alert("You selected: " + flavor);
+            redirectToOrder();
+        }
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const selectedFlavor = params.get("flavor"); // Get flavor from URL
+        
+            if (selectedFlavor) {
+                // Set the selected option in the dropdown
+                document.getElementById("flavor").value = selectedFlavor;
+            }
+        };
+        
+        
+        // Close dropdown when clicking outside
+        window.addEventListener("click", function (event) {
+            if (!event.target.closest(".btn-explore-flavors") && !event.target.closest("#flavorMenu")) {
+                let dropdown = document.getElementById("flavorMenu");
+                if (dropdown && dropdown.classList.contains("show")) {
+                    dropdown.classList.remove("show");
+                }
+            }
+        });
+    
+    </script>
+    
+    
+</body>
+</html>

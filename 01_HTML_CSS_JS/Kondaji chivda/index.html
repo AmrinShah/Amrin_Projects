@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kondaji Chivda</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="kstyle.css">
+    
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    
+        <nav class="navbar background h-nav-resp">
+            
+            <div class="logo">Kondaji Chivda</div>
+            <ul class="nav-links v-class-resp">
+                <li><a href="Kondaji.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="product.html">Our Products</a></li>
+                <li><a href="testimonial.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>  
+        </nav>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Our Products</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        
+
+    <div class="wrapper">
+        <main>
+    <!-- Hero Section -->
+    <section class="hero">
+    <div class="hero-text">
+        <h1>Savor the Crunch, Relish the Legacy🍲 <br> Handcrafted with Love</h1>
+        <p>Experience the authentic taste of Kondaji Chivda – made with pure ingredients, delivering freshness and delight in every bite.</p>
+        
+
+            <a href="getorder.html" class="btn btn-get-yours-now">Get Yours Now</a>
+
+            <button class="btn btn-explore-flavors" onclick="toggleDropdown()">Explore Flavors</button>
+            
+
+            <div class="dropdown-container">
+               
+                <ul class="dropdown-menu" id="flavorMenu">
+                    <li onclick="selectFlavor('Spicy Masala')">Spicy Masala</li>
+                    <li onclick="selectFlavor('Classic Salted')">Classic Salted</li>
+                    <li onclick="selectFlavor('Cheese Delight')">Cheese Delight</li>
+                    <li onclick="selectFlavor('Sweet & Tangy')">Sweet & Tangy</li>
+                </ul>
+            </div>
+        </div>
+                
+
+      
+    <div class="hero-image">
+        <img src="img/kimg.webp" alt="Delicious Chivda">
+    </div>
+
+    <!-- Food Highlights -->
+    <div class="food-highlights">
+        <div class="food-item orange">
+            <img src="img/k2.jpg" alt="Classic Chivda">
+            <p>Classic Chivda - Light & crispy with a traditional taste</p>
+        </div>
+        <div class="food-item white">
+            <img src="img/k3.jpg" alt="Spicy Chivda">
+            <p>Spicy Chivda - A perfect blend of crunch & spice</p>
+        </div>
+        <div class="food-item white">
+            <img src="img/k4.jpg" alt="Nutty Chivda">
+            <p>Nutty Chivda - Rich in dry fruits & roasted nuts</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kondaji Chivda | All Rights Reserved</p>
+    </footer>
+    
+
+<script>
+
+    function toggleDropdown() {
+        let menu = document.getElementById("flavorMenu");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    
+    function selectFlavor(flavor) {
+        alert("You selected: " + flavor);
+        
+        // Redirect to order page with flavor in URL
+        window.location.href = "getorder.html?flavor=" + encodeURIComponent(flavor);
+    }
+    
+    document.addEventListener("click", function(event) {
+        let menu = document.getElementById("flavorMenu");
+        let button = document.querySelector(".btn-explore-flavors");
+    
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+            menu.style.display = "none";
+        }
+    });
+    
+        document.addEventListener("DOMContentLoaded", function () {
+        const burger = document.querySelector(".burger");
+        const navLinks = document.querySelector(".nav-links");
+        const bodyContent = document.querySelector(".hero-section"); // Adjust class as needed
+    
+        burger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+            
+            // Add margin to body content when menu is open
+            if (navLinks.classList.contains("active")) {
+                bodyContent.classList.add("menu-open");
+            } else {
+                bodyContent.classList.remove("menu-open");
+            }
+        });
+    });
+
+    
+    
+</script>
+
+
+</body>
+
+    
+</html>

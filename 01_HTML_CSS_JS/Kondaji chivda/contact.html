@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Kondaji Chivda</title>
+    <link rel="stylesheet" href="kstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+
+   /* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Moves logo left, navbar right */
+    align-items: center;
+    background-color: white; /* Navbar background */
+    padding: 10px 0; /* Adds space inside the navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Logo Styling */
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0; /* Adds space between menu items */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block;
+    position:relative;
+}
+
+.nav-links a:hover {
+    color: darkorange;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 60%;
+    height: 2px;
+    background-color: darkorange;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: #f8b400;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 80%; /* Ensures menu appears below navbar */
+        left: 60%;
+        width: 40%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        padding: 5px 0;
+        z-index: 999; /* Keeps menu above content */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Ensure content moves down when navbar expands */
+    .menu-open {
+        margin-top: 150px; /* Adjust spacing below navbar */
+    }
+
+
+    .nav-links li a {
+        text-decoration: none;
+        color: black; /* Default color */
+        font-size: 18px;
+        padding: 10px 20px;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+        background: orange; /* Change background on hover */
+        color: white; /* Change text color */
+    }
+}
+
+/* Ensure main content is pushed below the navbar */
+main {
+    margin-top: 40px; /* Adjust height based on navbar */
+}
+
+
+/* Contact Us Page Styling */
+/* Contact Form */
+.contact-container {
+    text-align: center;
+    padding: 50px;
+    color: white;
+    background-color: #ff9800;
+}
+
+.contact-container h2 {
+    color: white !important;
+    margin-bottom: 10px;
+}
+
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-container input, .contact-container textarea {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-container button {
+    margin: 2px;
+    padding: 10px 25px;
+    background-color: white;
+    color: darkorange;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-container button:hover {
+    background-color: #ff9800;
+    color: white;
+    border-color: white;
+}
+
+</style>    
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    
+    <nav class="navbar background h-nav-resp">
+            
+        <div class="logo">Kondaji Chivda</div>
+        <ul class="nav-links v-class-resp">
+            <li><a href="Kondaji.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Our Products</a></li>
+            <li><a href="testimonial.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>  
+    </nav>
+
+    
+
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div class="locations">
+        <h3>Our Locations in Nashik</h3>
+        <p><strong><a href="https://maps.app.goo.gl/TkhMWk3Ef3fKhQYdA" class="location-link" target="_blank">General Vaidya Nagar:</a></strong> Shop No.6, Pune Rd, General Vaidya Nagar, Nashik - 420011</p>
+        <p><strong><a href="https://maps.app.goo.gl/wksXpBFyUJgdJJNB6" class="location-link" target="_blank">Parag Plaza:</a></strong> Old Agra Road, Nashik, Maharashtra 422001</p>
+        <p><strong><a href="https://maps.app.goo.gl/bY3D69tT8SMkkSnq6" class="location-link" target="_blank">Trimurti - CIDCO Rd:</a></strong> Shivshakti Nagar, Nashik, Maharashtra 422007</p>
+        <p><strong><a href="https://maps.app.goo.gl/qNnc73CCSC3wwk5D6" class="location-link" target="_blank">Nashik Road:</a></strong> Railway Station, Nashik, Maharashtra 422214</p>
+        <p><strong><a href="https://maps.app.goo.gl/yFs1EuLjmH6qwLMg8" class="location-link" target="_blank">Bhadarakali Vegetable Market</a></strong> 1140, Kondaji Chivda House, Nashik - 422001</p>
+    </div>
+    
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About</h3>
+                <p>Kondaji Chivda - The taste of tradition with every bite.</p>
+            </div>
+            <div class="footer-section menu">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="Kondaji.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="product.html">Our Products</a></li>
+                    <li><a href="testimonial.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+          
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>📍 1140, Bhadrakali, Market, Nashik, Maharashtra 422001</p>
+                <p>📞 Call: +01 1234567890</p>
+                <p>📧 Email: mail@domain.com</p>
+
+                 <!-- Social Media Links -->
+                  <div class="social-icons">
+                <a href="https://www.instagram.com/YOUR_PAGE" target="_blank">
+                <i class="fab fa-instagram"></i> 
+                </a>
+                <a href="https://www.facebook.com/kondajichivdawavrebandhuproduct/following/" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                 <a href="https://www.youtube.com/@VikramWavre" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+    </div>
+</div>
+                
+            </div>
+        </div>
+    </footer>
+ 
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const burger = document.querySelector(".burger");
+            const navLinks = document.querySelector(".nav-links");
+        
+            burger.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+        
+        // Function to redirect to order page
+        function redirectToOrder() {
+            window.location.href = "getorder.html"; 
+        }
+        
+        // Function to handle "Explore Flavors" click
+        function handleExploreClick() {
+            toggleDropdown(); // Show dropdown first
+            setTimeout(redirectToOrder, 2000); // Redirect after 2 seconds
+        }
+        
+        // Function to toggle dropdown visibility
+        function toggleDropdown() {
+            let dropdown = document.getElementById("flavorMenu");
+            dropdown.classList.toggle("show");
+        }
+        
+        // Function to select a flavor and redirect
+        function selectFlavor(flavor) {
+            alert("You selected: " + flavor);
+            redirectToOrder();
+        }
+        
+        // Close dropdown when clicking outside
+        window.addEventListener("click", function (event) {
+            if (!event.target.closest(".btn-explore-flavors") && !event.target.closest("#flavorMenu")) {
+                let dropdown = document.getElementById("flavorMenu");
+                if (dropdown && dropdown.classList.contains("show")) {
+                    dropdown.classList.remove("show");
+                }
+            }
+        });
+    
+    </script>
+
+</body>
+</html>
